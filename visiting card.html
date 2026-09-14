@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="image.png  ">
+    <title>Visiting Card</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Lora, serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 80% 20%,
+                    rgba(72, 105, 145, 0.15),
+                    transparent 30%),
+                radial-gradient(circle at 20% 90%,
+                    rgba(70, 95, 130, 0.13),
+                    transparent 35%),
+                #07162d;
+
+            position: relative;
+            /* overflow: hidden; */
+
+            /* display: flex; */
+            align-items: center;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            right: -250px;
+            top: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 60px rgba(255, 255, 255, 0.015),
+                0 0 0 120px rgba(255, 255, 255, 0.01);
+        }
+
+        /* =============================
+    ----- Navbar Section ------
+   ============================= */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+
+        }
+
+        .navbar {
+            background-color: RGBA(199, 211, 192, 0.95);
+            height: 10%;
+            width: 900px;
+            margin: 30px 170px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 25px;
+
+            backdrop-filter: blur(10px);
+            /* -webkit-backdrop-filter: blur(10px); */
+        }
+
+        .navbar .part-1 h1 {
+            color: #0A2947;
+        }
+
+        .navbar .part-2 ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 30px;
+            font-size: 20px;
+            padding: 13px 0;
+
+        }
+
+        .navbar .part-2 ul li {
+            list-style: none;
+        }
+
+        .navbar .part-2 ul li a {
+            text-decoration: none;
+            color: #8B5E3C;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .card {
+            height: 17rem;
+            width: 30rem;
+            border-radius: 10px;
+            background-color: black;
+            margin: 10rem 25rem;
+
+        }
+
+        .card:hover {
+            border: 2px solid aqua;
+            box-shadow: 0 0 20PX aqua;
+            transition: 4s;
+        }
+
+        .card .head {
+            display: flex;
+            height: 12rem;
+            /* background-color: brown; */
+        }
+
+        .head .left {
+            width: 50%;
+            padding-top: 60px;
+            /* background-color: blue; */
+        }
+
+        .head .left span {
+            color: white;
+            padding-top: 30px;
+        }
+
+        .name {
+            font-size: 30px;
+            padding-left: 20px;
+        }
+
+        .profession {
+            font-size: 23px;
+            padding-left: 140px;
+        }
+
+        .degree {
+            font-size: 20px;
+            padding-left: 65px;
+        }
+
+        .head .right {
+            width: 50%;
+            /* background-color: red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .head .right img {
+            height: 150px;
+            width: 150px;
+            padding-top: 10px;
+
+        }
+
+        .chamber {
+            /* background-color: red; */
+            color: white;
+            font-size: 20px;
+            padding: 0px 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .strip {
+            height: 30px;
+            font-size: 20px;
+            padding: 5px 0;
+            margin-top: 10px;
+            text-align: center;
+            background-color: rgba(221, 221, 221, 10);
+        }
+
+        /* ============================================
+    ----- Consultation Booking  Section ------
+   ============================================ */
+
+        #cosultation {
+
+            width: 100%;
+            min-height: 400px;
+            padding-top: 10px;
+            clear: both;
+        }
+
+        #consultation h1 {
+            font-size: 45px;
+            text-align: center;
+            margin: 20px 0 30px;
+            color: #12544F;
+        }
+
+        #consultation h1 span {
+            color: #8B1E2D;
+        }
+
+
+        .consultant {
+            height: 450px;
+            width: 100%;
+            margin: 80px 0px;
+
+            background-image: url("background\ image\ 2.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+
+            opacity: 10;
+            z-index: -1;
+        }
+
+        .image-text {
+            text-align: center;
+            padding-top: 120px;
+        }
+
+        .image-text span {
+            color: white;
+            font-size: 50px;
+        }
+
+        .image-text p {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .image-text .btn {
+            background-color: #bc8e39;
+            color: antiquewhite;
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 30px;
+            border: 1px solid #bc8e39;
+            border-radius: 10px;
+        }
+
+
+        /* ============================================
+        -------- Footer Section ---------
+   ============================================ */
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 50px 60px 20px;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            box-sizing: border-box;
+            /* min-height: 350px; */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 50px;
+        }
+
+        .footer-content .part-1 h1,
+        .footer-content .part-2 h1,
+        .footer-content .part-3 h1 {
+            color: #bc8e39;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .balance-scale {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .balance-scale i {
+            color: #bc8e39;
+            font-size: 20px;
+        }
+
+        .balance-scale .fa-scale-balanced {
+            font-size: 35px;
+
+        }
+
+        .small-text {
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .email-text {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+
+        }
+
+        .email-text input {
+            width: 100%;
+            height: 42px;
+            border: 1px solid #bc8e39;
+            box-sizing: border-box;
+            padding: 0 15px;
+            background-color: #111;
+            color: white;
+            font-size: 20px;
+            outline: none;
+        }
+
+        .email-text input::placeholder {
+            color: #aaa;
+        }
+
+        .email-text button {
+            width: 50px;
+            height: 42px;
+            background-color: #bc8e39;
+            border: none;
+            cursor: pointer;
+        }
+
+        .email-text button i {
+            font-size: 20px;
+        }
+
+
+        .footer-content .part-2 {
+            width: 25%;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .links a {
+            color: #aaa;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            color: #bc8e39;
+            padding-left: 7px;
+        }
+
+        .footer-content .part-3 {
+            width: 35%;
+        }
+
+        .ph-number,
+        .mail,
+        .location {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .ph-number i,
+        .mail i,
+        .location i {
+            color: #bc8e39;
+            font-size: 19px;
+            /* min-width: 20px; */
+        }
+
+        .footer-content .part-3 a {
+            color: #ddd;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .footer-content .part-3 a:hover {
+            color: #bc8e39;
+        }
+
+
+        footer hr {
+            border: none;
+            border-top: 1px solid #8B5E3C;
+            margin: 40px 0px 20px;
+        }
+
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .footer-bottom .icons {
+            display: flex;
+            gap: 12px;
+
+        }
+
+        .footer-bottom .icons a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-bottom .icons i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            border: 2px solid #bc8e39;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .footer-bottom .icons i:hover {
+            background-color: #bc8e39;
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+
+
+
+        /* ================================
+                  RESPONSIVE CSS
+              Phone + Tablet + Laptop
+           ================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
+        /* ---------- Laptop ---------- */
+
+        @media (min-width: 901px) and (max-width: 1200px) {
+
+            .navbar {
+                width: 90%;
+                margin: 30px auto;
+            }
+
+            .navbar .part-2 ul {
+                gap: 20px;
+                font-size: 18px;
+            }
+
+            .card {
+                width: 500px;
+                max-width: 90%;
+                margin: 120px auto;
+            }
+
+            .name {
+                font-size: 30px;
+            }
+
+            .profession {
+                font-size: 21px;
+                padding-left: 155px;
+            }
+
+            .degree {
+                font-size: 18px;
+                padding-left: 90px;
+            }
+
+            .head .right img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .chamber {
+                font-size: 19px;
+                padding-left: 20px;
+            }
+
+        }
+
+
+        /* ---------- Tablet ---------- */
+
+        @media (min-width: 601px) and (max-width: 900px) {
+
+            .navbar {
+                width: 90%;
+                margin: 25px auto;
+                height: auto;
+                padding: 10px;
+            }
+
+            .navbar .part-1 h1 {
+                font-size: 25px;
+            }
+
+            .navbar .part-2 ul {
+                gap: 15px;
+                font-size: 16px;
+                padding: 8px;
+            }
+
+            .card {
+                width: 500px;
+                max-width: 90%;
+                height: auto;
+                margin: 100px auto;
+            }
+
+            .head .left {
+                width: 55%;
+            }
+
+            .head .right {
+                width: 45%;
+            }
+
+            .name {
+                font-size: 28px;
+                padding-left: 25px;
+            }
+
+            .profession {
+                font-size: 23px;
+                padding-left: 145px;
+            }
+
+            .degree {
+                font-size: 17px;
+                padding-left: 97px;
+            }
+
+            .head .right img {
+                width: 130px;
+                height: 130px;
+            }
+
+            .chamber {
+                font-size: 18px;
+                padding: 0 25px;
+                line-height: 1.5;
+            }
+
+            .strip {
+                font-size: 20px;
+                height: auto;
+            }
+
+            footer {
+                padding: 40px 30px 20px;
+            }
+
+            .footer-content {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .footer-content .part-1 {
+                width: 100%;
+            }
+
+            .footer-content .part-2 {
+                width: 40%;
+            }
+
+            .footer-content .part-3 {
+                width: 55%;
+            }
+
+        }
+
+
+        /* ---------- Phone ---------- */
+
+        @media (max-width: 600px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            body::before {
+                width: 350px;
+                height: 350px;
+                right: -180px;
+            }
+
+            nav {
+                top: 10px;
+            }
+
+            .navbar {
+                width: 94%;
+                margin: 15px auto;
+                height: auto;
+                flex-direction: column;
+                padding: 10px;
+                border-radius: 18px;
+            }
+
+            .navbar .part-1 h1 {
+                font-size: 22px;
+                margin: 5px 0 8px;
+            }
+
+            .navbar .part-2 ul {
+                flex-wrap: wrap;
+                gap: 10px 15px;
+                font-size: 14px;
+                padding: 5px;
+                justify-content: center;
+            }
+
+            .card {
+                width: 94%;
+                max-width: 350px;
+                height: auto;
+                margin: 70px auto;
+            }
+
+            .card .head {
+                height: auto;
+                min-height: 150px;
+            }
+
+            .head .left {
+                width: 60%;
+                padding-top: 35px;
+            }
+
+            .head .right {
+                width: 40%;
+            }
+
+            .head .right img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .name {
+                display: block;
+                font-size: 23px;
+                padding-left: 15px;
+                /* white-space: nowrap; */
+            }
+
+            .profession {
+                /* display: inline-block; */
+                font-size: 18px;
+                padding-left: 110px;
+            }
+
+            .degree {
+                /* display: inline-block; */
+                font-size: 15px;
+                padding-left: 60px;
+            }
+
+            .chamber {
+                /* display: block; */
+                font-size: 13px;
+                line-height: 1.5;
+                padding: 0 15px;
+                margin-bottom: 15px;
+            }
+
+            .strip {
+                height: auto;
+                min-height: 20px;
+                font-size: 13px;
+                line-height: 1.4;
+                padding: 2px;
+            }
+
+            footer {
+                padding: 30px 20px 15px;
+                border-radius: 15px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-content .part-1,
+            .footer-content .part-2,
+            .footer-content .part-3 {
+                width: 100%;
+            }
+
+            .footer-content .part-1 h1,
+            .footer-content .part-2 h1,
+            .footer-content .part-3 h1 {
+                font-size: 22px;
+            }
+
+            .small-text {
+                font-size: 15px;
+            }
+
+            .email-text {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-bottom .icons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav>
+        <div class="navbar">
+            <div class="part-1">
+                <h1> Ravindra <span>Associate</span></h1>
+            </div>
+            <div class="part-2">
+                <ul>
+                    <li><a href="ravindra.html">Home</a></li>
+                    <li><a href="ravindra.html">About</a></li>
+                    <li><a href="ravindra.html">Case</a></li>
+                    <li><a href="book form.html">Consultation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card">
+        <div class="head">
+            <div class="left">
+                <span class="name">Ravindra Gautam</span>
+                <span class="profession">Advocate</span><br>
+                <span class="degree">LLB, MBA, PGDM </span>
+            </div>
+            <div class="right">
+                <img src="nyay ka taraju.png" alt="">
+            </div>
+
+        </div>
+        <span class="chamber">Chamber : Ambedkar Dwar Civil Court Kanpur Nagar</span>
+        <div class="strip">Criminal, Ragistry, Accidents Clams, Family Matters etc.</div>
+    </div>
+
+
+
+
+    <!------------------------- Footer Section --------------------------------->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <!-- Part 1 -->
+            <div class="part-1">
+
+                <h1>Your Rights, Our Commitment.</h1>
+
+                <div class="balance-scale">
+                    <i class="bi bi-suit-diamond-fill"></i>
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <i class="bi bi-suit-diamond-fill"></i>
+                </div>
+
+                <div class="small-text">
+                    Dedicated to providing reliable legal guidance, protecting your
+                    interests, and pursuing justice with integrity, professionalism
+                    and commitment.
+                </div>
+
+                <div class="email-text">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="button">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Part 2 -->
+            <div class="part-2">
+
+                <h1>Quick Links</h1>
+
+                <div class="links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#case">Case</a>
+                    <a href="#consultation">Consultation</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+            </div>
+
+
+            <!-- Part 3 -->
+            <div class="part-3">
+
+                <h1>Contact Us</h1>
+
+                <div class="ph-number">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span>
+                        <a href="tel:+918737920777">+91-8737920777</a>
+                    </span>
+                </div>
+
+                <div class="mail">
+                    <i class="bi bi-envelope-at-fill"></i>
+                    <span>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=advravindragautam777@gmail.com"
+                            target="_blank">
+                            advravindragautam777@gmail.com
+                        </a>
+                    </span>
+                </div>
+
+                <div class="location">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>
+                        Ambedkar Dwar, Civil Court,
+                        Kanpur Nagar - 208001
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+
+            <p>© 2026 Ravindra Legal Associate. All Rights Reserved.</p>
+
+            <div class="icons">
+
+                <a href="https://www.facebook.com/ravindra.gautamadv.7" target="_blank"> <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/advravindragautam777" target="_blank"> <i
+                        class="bi bi-linkedin"></i> </a>
+
+                <a href="https://x.com/AdvocatRavindra" target="_blank"> <i class="bi bi-twitter-x"></i> </a>
+
+                <a href="https://www.instagram.com/ravindragautamadv?stkn=cTg1dWptcGJndW1j" target="_blank"> <i
+                        class="bi bi-instagram"></i> </a>
+
+                <a href="#"> <i class="bi bi-youtube"></i> </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
